@@ -8,7 +8,7 @@ namespace NotepadExt
     public partial class DialogFind : Form
     {
         NotepadExt mainapp;
-        int startindex = 0;
+        //int startindex = 0;
         FindNextPrefs FindNextConfigs = new FindNextPrefs();
         public RichTextBox Editor { get; internal set; }
 
@@ -36,12 +36,12 @@ namespace NotepadExt
         {
             //object TypeArea = Parent.TextArea;
             int SelectStartPosition;
+            String textToFind = tbFind.Text;
+            int len = textToFind.Length;
 
             if (radioUp.Checked == true)
             {
-                FindNextConfigs.SearchDirection = "UP";
-                String textToFind = tbFind.Text;
-                int len = textToFind.Length;
+                FindNextConfigs.SearchDirection = true;
 
                 SelectStartPosition = cbToggleMatch.Checked ?
                 Editor.Text.LastIndexOf(textToFind, Editor.SelectionStart) :
@@ -56,10 +56,18 @@ namespace NotepadExt
             }
             else
             {
-                FindNextConfigs.SearchDirection = "DOWN";
-                String textToFind = tbFind.Text;
-                int len = textToFind.Length;
+                int startIndex = Editor.SelectionStart + Editor.SelectionLength;
 
+                FindNextConfigs.SearchDirection = false;
+
+                SelectStartPosition = cbToggleMatch.Checked ?
+                Editor.Text.IndexOf(textToFind, startIndex) :
+                Editor.Text.IndexOf(textToFind, startIndex, StringComparison.CurrentCultureIgnoreCase);
+
+                if (SelectStartPosition > -1 && (SelectStartPosition + len) <= Editor.Text.Length)
+                {
+                    Editor.Select(SelectStartPosition, len);
+                }
                 //String TextAreaText = Parent.TextArea.Text.Substring(0, Parent.TextArea.SelectionStart);
             }
             

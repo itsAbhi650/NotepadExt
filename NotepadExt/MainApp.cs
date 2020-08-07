@@ -403,7 +403,7 @@ namespace NotepadExt
         //-----------------------------------------------------------------------------------------------------
         private void btnFindNxt_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

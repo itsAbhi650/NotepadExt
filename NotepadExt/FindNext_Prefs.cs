@@ -9,7 +9,7 @@ namespace NotepadExt
     public class FindNextPrefs
     {
         String SearchText;
-        String Direction;
+        bool Direction;
         int position;
 
         public String Text
@@ -18,7 +18,7 @@ namespace NotepadExt
             set { this.SearchText = value; }
         }
 
-        public String SearchDirection
+        public bool SearchDirection
         {
             get { return this.Direction; }
             set { this.Direction = value; }
