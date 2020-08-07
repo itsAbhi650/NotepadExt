@@ -62,7 +62,7 @@ namespace NotepadExt
 
                 //String TextAreaText = Parent.TextArea.Text.Substring(0, Parent.TextArea.SelectionStart);
             }
-            //startindex++;
+            
         }
 
 
