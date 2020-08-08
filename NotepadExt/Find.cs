@@ -22,6 +22,11 @@ namespace NotepadExt
         }
 
         //-----------------------------------------------------------------------------------------------------
+        public FindNextPrefs FindNextProps
+        {
+            get { return FindNextConfigs; }
+            internal set { FindNextConfigs = value; }
+        }
         public DialogFind(NotepadExt mainapp)
         {
             InitializeComponent();
