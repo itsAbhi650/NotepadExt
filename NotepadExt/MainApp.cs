@@ -403,7 +403,9 @@ namespace NotepadExt
         //-----------------------------------------------------------------------------------------------------
         private void btnFindNxt_Click(object sender, EventArgs e)
         {
-            
+            //FindDialog.GenFindNextQuery();
+            //FindDialog.QryFindNext();
+            //FindDialog.Editor.Select(0, 2);
         }
     }
 }

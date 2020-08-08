@@ -131,6 +131,7 @@
             this.radioUp.Size = new System.Drawing.Size(14, 13);
             this.radioUp.TabIndex = 0;
             this.radioUp.UseVisualStyleBackColor = true;
+            this.radioUp.CheckedChanged += new System.EventHandler(this.radioUp_CheckedChanged);
             // 
             // cbToggleMatch
             // 
@@ -141,6 +142,7 @@
             this.cbToggleMatch.TabIndex = 5;
             this.cbToggleMatch.Text = "Match case";
             this.cbToggleMatch.UseVisualStyleBackColor = true;
+            this.cbToggleMatch.CheckedChanged += new System.EventHandler(this.cbToggleMatch_CheckedChanged);
             // 
             // DialogFind
             // 

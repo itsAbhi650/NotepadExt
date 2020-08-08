@@ -1,33 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NotepadExt
 {
+    //-----------------------------------------------------------------------------------------------------
     public class FindNextPrefs
     {
         String SearchText;
-        bool Direction;
+        String Content;
+        String Direction;
         int position;
+        bool MatchCase;
 
-        public String Text
+        //-----------------------------------------------------------------------------------------------------
+        public String SearchString
         {
             get { return this.SearchText; }
             set { this.SearchText = value; }
         }
 
-        public bool SearchDirection
+        //-----------------------------------------------------------------------------------------------------
+        public String SearchDirection
         {
             get { return this.Direction; }
             set { this.Direction = value; }
         }
 
+        //-----------------------------------------------------------------------------------------------------
         public int CurrentPosition
         {
             get { return this.position; }
             set { this.position = value; }
         }
+
+        //-----------------------------------------------------------------------------------------------------
+        public bool HardMatch
+        {
+            get { return this.MatchCase; }
+            set { this.MatchCase = value; }
+        }
+
+        //-----------------------------------------------------------------------------------------------------
+        public String content
+        {
+            get { return this.Content; }
+            set { this.Content = value; }
+        }
     }
 }
+
+
+
