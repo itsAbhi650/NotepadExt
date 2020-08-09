@@ -12,6 +12,12 @@ namespace NotepadExt
         public RichTextBox Editor { get; internal set; }
 
         //-----------------------------------------------------------------------------------------------------
+        public FindNextPrefs FindNextProps
+        {
+            get { return FindNextConfigs; }
+            internal set { FindNextConfigs = value; }
+        }
+        //-----------------------------------------------------------------------------------------------------
         public void GenFindNextQuery()
         {
             FindNextConfigs.SearchString = tbFind.Text;
@@ -94,8 +100,8 @@ namespace NotepadExt
             int StartPosition = -1;
             int SelectStartPosition = -1;
             StringComparison SearchType = FindNextConfigs.HardMatch ?
-                StringComparison.CurrentCulture :
-                StringComparison.CurrentCultureIgnoreCase;
+            StringComparison.CurrentCulture :
+            StringComparison.CurrentCultureIgnoreCase;
 
             if (FindNextConfigs.SearchDirection == "UP")
             {
@@ -109,8 +115,8 @@ namespace NotepadExt
             else
             {
                 StartPosition = Editor.SelectedText.Length > 0 ?
-                    Editor.SelectionStart + FindNextConfigs.SearchString.Length :
-                    Editor.SelectionStart;
+                Editor.SelectionStart + FindNextConfigs.SearchString.Length :
+                Editor.SelectionStart;
 
                 SelectStartPosition = Editor.Text.IndexOf(FindNextConfigs.SearchString, StartPosition, SearchType);
 
@@ -125,5 +131,6 @@ namespace NotepadExt
 
     }
 }
+
 
 
