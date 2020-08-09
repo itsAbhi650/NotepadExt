@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Replace.Designer.cs">
+      <DependentUpon>Replace.cs</DependentUpon>
+    </Compile>
     <Compile Include="zoomFactDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Replace.resx">
+      <DependentUpon>Replace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="zoomFactDialog.resx">
       <DependentUpon>zoomFactDialog.cs</DependentUpon>
     </EmbeddedResource>
