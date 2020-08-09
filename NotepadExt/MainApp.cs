@@ -13,6 +13,8 @@ namespace NotepadExt
         static String _AppName = "NotepadExt";
         FindNextPrefs FindNextConfig = new FindNextPrefs();
         DialogFind FindDialog;
+        DialogReplace ReplaceDialog;
+
 
         //-----------------------------------------------------------------------------------------------------
         public NotepadExt()
@@ -21,8 +23,15 @@ namespace NotepadExt
 
             FileStruct.InitializeStruct();
             this.Text = FileStruct.FileName + " - " + _AppName;
-            FindDialog = new DialogFind(this);
-            FindDialog.Editor = TypeArea;
+
+        }
+
+        private void UpdateEditOps()
+        {
+            if (TypeArea.SelectedText.Length > 0) 
+                btnCopy.Enabled = btnCut.Enabled = btnDelete.Enabled = true;
+            else
+                btnCopy.Enabled = btnCut.Enabled = btnDelete.Enabled = false;
         }
         //-----------------------------------------------------------------------------------------------------
         private void btnReadOnly_Click(object sender, EventArgs e)
@@ -39,6 +48,8 @@ namespace NotepadExt
             FileStruct.StatusStripState = !btnWordWrap.Checked ? true : false;
             btnToggleStatusBar.Checked = !btnWordWrap.Checked ? true : false;
             btnToggleStatusBar.Enabled = !btnWordWrap.Checked ? true : false;
+            btnFind.Enabled = btnFindNxt.Enabled = TypeArea.Text.Length > 0 ? true : false;
+            UpdateEditOps();
             //FileStruct.StatusStripState = btnToggleStatusBar.Checked;
         }
 
@@ -252,6 +263,9 @@ namespace NotepadExt
         private void TypeArea_TextChanged(object sender, EventArgs e)
         {
             FileStruct.SaveState = false;
+            btnFind.Enabled = btnFindNxt.Enabled = TypeArea.Text.Length > 0 ? true : false;
+            UpdateEditOps();
+
         }
 
         //-----------------------------------------------------------------------------------------------------
@@ -285,7 +299,6 @@ namespace NotepadExt
                 File.WriteAllLines(File_DiskPath, textLines);
             }
         }
-        //-----------------------------------------------------------------------------------------------------
         struct NpExtFileStruct
         {
 
@@ -379,13 +392,22 @@ namespace NotepadExt
         private void btnFind_Click(object sender, EventArgs e)
         {
             //DialogFind FD = new DialogFind(this);
-            FindDialog.Editor = TypeArea;
             if (FindDialog == null)
             {
-                FindDialog = new DialogFind(this);
+                FindDialog = new DialogFind();
                 FindDialog.Editor = TypeArea;
+                FindDialog.ShowDialog(this);
             }
+<<<<<<< HEAD
             FindDialog.ShowDialog(this);
+=======
+            else
+            {
+                FindDialog.Editor = TypeArea;
+                FindDialog.ShowDialog(this);
+            }
+
+>>>>>>> ReplaceText
         }
 
         //-----------------------------------------------------------------------------------------------------
@@ -395,13 +417,19 @@ namespace NotepadExt
             int column = TypeArea.SelectionStart - TypeArea.GetFirstCharIndexOfCurrentLine() + 1;
             StripLnColLabel.Text = String.Format("Ln {0}, Col {1}", line, column);
 
+            
+
         }
 
         //-----------------------------------------------------------------------------------------------------
         private void btnFindNxt_Click(object sender, EventArgs e)
         {
             FindDialog.GenFindNextQuery();
+<<<<<<< HEAD
             if (FindDialog.FindNextProps.SearchString.Length>0)
+=======
+            if (FindDialog.FindNextProps.SearchString.Length > 0)
+>>>>>>> ReplaceText
             {
                 FindDialog.findNext(FindDialog.FindNextProps);
             }
@@ -410,6 +438,24 @@ namespace NotepadExt
                 FindDialog.ShowDialog(this);
             }
         }
+
+        //-----------------------------------------------------------------------------------------------------
+        private void btnReplace_Click(object sender, EventArgs e)
+        {
+            if (ReplaceDialog == null)
+            {
+                ReplaceDialog = new DialogReplace();
+                ReplaceDialog.Editor = TypeArea;
+                ReplaceDialog.ShowDialog(this);
+            }
+            else
+            {
+                ReplaceDialog.Editor = TypeArea;
+                ReplaceDialog.ShowDialog(this);
+            }
+
+        }
+        
     }
 }
 
@@ -427,5 +473,3 @@ namespace NotepadExt
 //}
 //coldebug.Text = TypeArea.SelectionStart.ToString();
 //lioff.Text = pos.ToString();
-
-

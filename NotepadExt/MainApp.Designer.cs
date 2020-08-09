@@ -239,6 +239,7 @@
             // 
             this.btnReplace.Index = 10;
             this.btnReplace.Text = "Replace...";
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
             // 
             // btnGoto
             // 
