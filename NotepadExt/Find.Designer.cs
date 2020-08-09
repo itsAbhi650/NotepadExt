@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbFind = new System.Windows.Forms.TextBox();
             this.btnFindNext = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,15 +69,15 @@
             this.btnFindNext.UseVisualStyleBackColor = true;
             this.btnFindNext.Click += new System.EventHandler(this.btnFindNext_Click);
             // 
-            // button2
+            // btnClose
             // 
-            this.button2.Location = new System.Drawing.Point(273, 36);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnClose.Location = new System.Drawing.Point(273, 36);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox1
             // 
@@ -151,7 +151,7 @@
             this.ClientSize = new System.Drawing.Size(354, 99);
             this.Controls.Add(this.cbToggleMatch);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnFindNext);
             this.Controls.Add(this.tbFind);
             this.Controls.Add(this.label1);
@@ -173,7 +173,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFind;
         private System.Windows.Forms.Button btnFindNext;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioUp;
         private System.Windows.Forms.CheckBox cbToggleMatch;

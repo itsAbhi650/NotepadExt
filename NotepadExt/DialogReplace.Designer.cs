@@ -1,6 +1,6 @@
 ﻿namespace NotepadExt
 {
-    partial class Replace
+    partial class DialogReplace
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbRMatchCase = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbRDown = new System.Windows.Forms.RadioButton();
+            this.rbRUp = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRFindNext
@@ -57,6 +61,7 @@
             this.btnRplc.TabIndex = 1;
             this.btnRplc.Text = "Re&place";
             this.btnRplc.UseVisualStyleBackColor = true;
+            this.btnRplc.Click += new System.EventHandler(this.btnRplc_Click);
             // 
             // btnRplcAll
             // 
@@ -66,6 +71,7 @@
             this.btnRplcAll.TabIndex = 2;
             this.btnRplcAll.Text = "Replace &All";
             this.btnRplcAll.UseVisualStyleBackColor = true;
+            this.btnRplcAll.Click += new System.EventHandler(this.btnRplcAll_Click);
             // 
             // btnRExit
             // 
@@ -75,6 +81,7 @@
             this.btnRExit.TabIndex = 3;
             this.btnRExit.Text = "Cancel";
             this.btnRExit.UseVisualStyleBackColor = true;
+            this.btnRExit.Click += new System.EventHandler(this.btnRExit_Click);
             // 
             // tbRFind
             // 
@@ -106,24 +113,59 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Re&place with:";
+            this.label2.Text = "Replace with:";
             // 
             // cbRMatchCase
             // 
             this.cbRMatchCase.AutoSize = true;
-            this.cbRMatchCase.Location = new System.Drawing.Point(6, 104);
+            this.cbRMatchCase.Location = new System.Drawing.Point(149, 42);
             this.cbRMatchCase.Name = "cbRMatchCase";
             this.cbRMatchCase.Size = new System.Drawing.Size(83, 17);
             this.cbRMatchCase.TabIndex = 8;
             this.cbRMatchCase.Text = "Match Case";
             this.cbRMatchCase.UseVisualStyleBackColor = true;
+            this.cbRMatchCase.CheckedChanged += new System.EventHandler(this.cbRMatchCase_CheckedChanged);
             // 
-            // Replace
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbRDown);
+            this.groupBox1.Controls.Add(this.rbRUp);
+            this.groupBox1.Controls.Add(this.cbRMatchCase);
+            this.groupBox1.Location = new System.Drawing.Point(11, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(238, 65);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Find Options";
+            // 
+            // rbRDown
+            // 
+            this.rbRDown.AutoSize = true;
+            this.rbRDown.Location = new System.Drawing.Point(16, 42);
+            this.rbRDown.Name = "rbRDown";
+            this.rbRDown.Size = new System.Drawing.Size(53, 17);
+            this.rbRDown.TabIndex = 10;
+            this.rbRDown.Text = "Down";
+            this.rbRDown.UseVisualStyleBackColor = true;
+            this.rbRDown.CheckedChanged += new System.EventHandler(this.rbRDown_CheckedChanged);
+            // 
+            // rbRUp
+            // 
+            this.rbRUp.AutoSize = true;
+            this.rbRUp.Location = new System.Drawing.Point(16, 19);
+            this.rbRUp.Name = "rbRUp";
+            this.rbRUp.Size = new System.Drawing.Size(39, 17);
+            this.rbRUp.TabIndex = 9;
+            this.rbRUp.Text = "Up";
+            this.rbRUp.UseVisualStyleBackColor = true;
+            this.rbRUp.CheckedChanged += new System.EventHandler(this.rbRUp_CheckedChanged);
+            // 
+            // DialogReplace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 153);
-            this.Controls.Add(this.cbRMatchCase);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbRplc);
@@ -133,8 +175,14 @@
             this.Controls.Add(this.btnRplc);
             this.Controls.Add(this.btnRFindNext);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Replace";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "DialogReplace";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Replace";
+            this.Load += new System.EventHandler(this.DialogReplace_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +199,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbRMatchCase;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbRDown;
+        private System.Windows.Forms.RadioButton rbRUp;
     }
 }

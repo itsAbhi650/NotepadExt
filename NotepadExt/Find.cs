@@ -6,8 +6,6 @@ namespace NotepadExt
     //-----------------------------------------------------------------------------------------------------
     public partial class DialogFind : Form
     {
-        NotepadExt mainapp;
-        //int startindex = 0;
         FindNextPrefs FindNextConfigs = new FindNextPrefs();
         public RichTextBox Editor { get; internal set; }
 
@@ -28,10 +26,10 @@ namespace NotepadExt
         }
 
         //-----------------------------------------------------------------------------------------------------
-        public DialogFind(NotepadExt mainapp)
+        public DialogFind()
         {
             InitializeComponent();
-            this.mainapp = mainapp;
+
         }
 
         //-----------------------------------------------------------------------------------------------------
@@ -54,7 +52,7 @@ namespace NotepadExt
         }
 
         //-----------------------------------------------------------------------------------------------------
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -63,74 +61,48 @@ namespace NotepadExt
         private void btnFindNext_Click(object sender, EventArgs e)
         {
             findNext(FindNextConfigs);
-            //int SelectStartPosition;
-            //String textToFind = tbFind.Text;
-            //int len = textToFind.Length;
-            //if (radioUp.Checked == true)
-            //{
-            //    //FindNextConfigs.SearchDirection = true;
-            //    SelectStartPosition = cbToggleMatch.Checked ?
-            //    Editor.Text.LastIndexOf(textToFind, Editor.SelectionStart) :
-            //    Editor.Text.LastIndexOf(textToFind, Editor.SelectionStart, StringComparison.CurrentCultureIgnoreCase);
-            //    if (SelectStartPosition > -1 && (SelectStartPosition + len) <= Editor.Text.Length)
-            //    {
-            //        Editor.Select(SelectStartPosition, len);
-            //    }
-            //}
-            //else
-            //{
-            //    int startIndex = Editor.SelectionStart + Editor.SelectionLength;
-            //    //FindNextConfigs.SearchDirection = false;
-            //    SelectStartPosition = cbToggleMatch.Checked ?
-            //    Editor.Text.IndexOf(textToFind, startIndex) :
-            //    Editor.Text.IndexOf(textToFind, startIndex, StringComparison.CurrentCultureIgnoreCase);
-
-            //    if (SelectStartPosition > -1 && (SelectStartPosition + len) <= Editor.Text.Length)
-            //    {
-            //        Editor.Select(SelectStartPosition, len);
-            //    }
-            //    //String TextAreaText = Parent.TextArea.Text.Substring(0, Parent.TextArea.SelectionStart);
-            //}
         }
 
         //-----------------------------------------------------------------------------------------------------
-        public void findNext(FindNextPrefs FindNextConfigs)
+        /// <summary>
+        /// Searches the richtextarea for the text specified by the configurations passed.
+        /// </summary>
+        /// <param name="Configs"></param>
+        public void findNext(FindNextPrefs Configs)
         {
-            GenFindNextQuery();
+            //GenFindNextQuery();
             int StartPosition = -1;
             int SelectStartPosition = -1;
-            StringComparison SearchType = FindNextConfigs.HardMatch ?
+            StringComparison SearchType = Configs.HardMatch ?
             StringComparison.CurrentCulture :
             StringComparison.CurrentCultureIgnoreCase;
 
-            if (FindNextConfigs.SearchDirection == "UP")
+            if (Configs.SearchDirection == "UP")
             {
-                SelectStartPosition = Editor.Text.LastIndexOf(FindNextConfigs.SearchString, Editor.SelectionStart, SearchType);
-                if (SelectStartPosition > -1 && (SelectStartPosition + FindNextConfigs.SearchString.Length) <= Editor.Text.Length)
+                SelectStartPosition = Editor.Text.LastIndexOf(Configs.SearchString, Editor.SelectionStart, SearchType);
+                if (SelectStartPosition > -1 && (SelectStartPosition + Configs.SearchString.Length) <= Editor.Text.Length)
                 {
-                    Editor.Select(SelectStartPosition, FindNextConfigs.SearchString.Length);
+                    Editor.Select(SelectStartPosition, Configs.SearchString.Length);
                 }
 
             }
             else
             {
                 StartPosition = Editor.SelectedText.Length > 0 ?
-                Editor.SelectionStart + FindNextConfigs.SearchString.Length :
+                Editor.SelectionStart + Configs.SearchString.Length :
                 Editor.SelectionStart;
 
-                SelectStartPosition = Editor.Text.IndexOf(FindNextConfigs.SearchString, StartPosition, SearchType);
+                SelectStartPosition = Editor.Text.IndexOf(Configs.SearchString, StartPosition, SearchType);
 
-                if (SelectStartPosition > -1 && (SelectStartPosition + FindNextConfigs.SearchString.Length) <= Editor.Text.Length)
+                if (SelectStartPosition > -1 && (SelectStartPosition + Configs.SearchString.Length) <= Editor.Text.Length)
                 {
-                    Editor.Select(SelectStartPosition, FindNextConfigs.SearchString.Length);
+                    Editor.Select(SelectStartPosition, Configs.SearchString.Length);
                 }
 
             }
 
         }
 
+
     }
 }
-
-
-
