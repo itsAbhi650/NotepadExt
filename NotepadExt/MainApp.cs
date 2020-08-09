@@ -385,10 +385,7 @@ namespace NotepadExt
                 FindDialog = new DialogFind(this);
                 FindDialog.Editor = TypeArea;
             }
-            FindDialog.Show();
-            //FindDialog.Editor.Text = TypeArea.Text;
-            //FD.Show();
-            //int startpos = Find();
+            FindDialog.ShowDialog(this);
         }
 
         //-----------------------------------------------------------------------------------------------------
@@ -403,9 +400,15 @@ namespace NotepadExt
         //-----------------------------------------------------------------------------------------------------
         private void btnFindNxt_Click(object sender, EventArgs e)
         {
-            //FindDialog.GenFindNextQuery();
-            //FindDialog.QryFindNext();
-            //FindDialog.Editor.Select(0, 2);
+            FindDialog.GenFindNextQuery();
+            if (FindDialog.FindNextProps.SearchString.Length>0)
+            {
+                FindDialog.findNext(FindDialog.FindNextProps);
+            }
+            else
+            {
+                FindDialog.ShowDialog(this);
+            }
         }
     }
 }
